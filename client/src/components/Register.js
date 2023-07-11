@@ -65,6 +65,11 @@ export const Register = () => {
       } 
       })
   }
+  console.log(formData.name, formData.email , formData.gender , profile_pic 
+    , formData.password , formData.confirm_password)
+
+  const shouldButtonDisable = ( formData.name && formData.email && formData.gender && profile_pic
+    && formData.password && formData.confirm_password ); 
 
   return (
     <>
@@ -176,7 +181,7 @@ export const Register = () => {
           />
         </div>
 
-        <button type='submit'>Register</button>
+        <button type='submit' disabled={!shouldButtonDisable} >Register</button>
       </form>
 
     </>

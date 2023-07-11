@@ -52,5 +52,5 @@ export const getAllUsers = async (req, res) => {
     if(!allUsers) {
         return json.status(404).json("No data to display.");
     }
-    res.json({ allUsers });
+    res.status(200).json({ allUsers });
 }

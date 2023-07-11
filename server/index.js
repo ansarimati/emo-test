@@ -5,7 +5,6 @@ import multer from "multer";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import path from "path";
-import { check } from "express-validator";
 import { register } from "./controller/auth.js";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
@@ -50,11 +49,8 @@ const upload = multer({ storage });
 @access      : pulic
 */
 
-app.post("/auth/register",  [ upload.single("profile_pic"), 
-    check("email", "Please include a valid email.").isEmail(),
-    check("name", "Name is required.").not().isEmpty(),
-    check("gender", "Gender is required.").not().isEmpty(),
-    check("password", "Please enter password with 6 or more charcters").isLength({ min: 6 })
+app.post("/auth/register",  [
+    upload.single("profile_pic")
 ] , register);
 
 
